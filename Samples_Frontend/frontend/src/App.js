@@ -1,0 +1,84 @@
+// src/App.js
+import React, { useState } from "react";
+import axios from "axios";
+
+function App() {
+  const [step, setStep] = useState(1);
+  const [sampleId, setSampleId] = useState("");
+  const [sampleData, setSampleData] = useState(null);
+  const [collectionDate, setCollectionDate] = useState("");
+  const [notes, setNotes] = useState("");
+  const [error, setError] = useState("");
+
+  const lookupSample = async () => {
+    try {
+      const res = await axios.get(`http://localhost:8000/api/sample/${sampleId}/`);
+      setSampleData(res.data);
+      setError("");
+    } catch (err) {
+      setError(err.response?.data?.error || "Sample NOT Found");
+      setSampleData(null);
+    }
+  };
+
+  const submitData = async () => {
+    try {
+      await axios.post(`http://localhost:8000/api/sample/submit/`, {
+        sample_id: sampleId,
+        collection_date: collectionDate,
+        notes,
+      });
+      alert("Submission successful!");
+      setStep(1);
+      setSampleId("");
+      setSampleData(null);
+      setCollectionDate("");
+      setNotes("");
+    } catch (err) {
+      setError(err.response?.data?.error || "Submission failed");
+    }
+  };
+
+  return (
+    <div style={{ padding: "20px", maxWidth: "400px", margin: "auto" }}>
+      <h1>Sample Collection</h1>
+      {step === 1 && (
+        <div>
+          <input
+            placeholder="Sample ID"
+            value={sampleId}
+            onChange={(e) => setSampleId(e.target.value)}
+          />
+          <button onClick={lookupSample}>Lookup</button>
+          {error && <p style={{ color: "red" }}>{error}</p>}
+          {sampleData && (
+            <div>
+              <p>Name: {sampleData.name}</p>
+              <p>DOB: {sampleData.date_of_birth}</p>
+              <button onClick={() => setStep(2)}>Confirm</button>
+            </div>
+          )}
+        </div>
+      )}
+      {step === 2 && (
+        <div>
+          <input
+            type="date"
+            value={collectionDate}
+            onChange={(e) => setCollectionDate(e.target.value)}
+            required
+          />
+          <textarea
+            placeholder="Notes (optional)"
+            value={notes}
+            onChange={(e) => setNotes(e.target.value)}
+          />
+          <button onClick={submitData}>Submit</button>
+          {error && <p style={{ color: "red" }}>{error}</p>}
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default App;
