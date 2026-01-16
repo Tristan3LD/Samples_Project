@@ -26,7 +26,7 @@ source venv/bin/activate
 3. Install dependencies
 pip install -r requirements.txt
 4. Run the server
-python manage.py runserver
+python3 manage.py runserver
 Backend will run at: http://127.0.0.1:8000
 
 
