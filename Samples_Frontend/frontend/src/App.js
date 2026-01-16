@@ -9,7 +9,7 @@ function App() {
   const [notes, setNotes] = useState("");
   const [error, setError] = useState("");
 
-  const lookupSample = async () => {
+  const getSample = async () => {
     try {
       const res = await axios.get(`http://localhost:8000/api/sample/${sampleId}/`);
       setSampleData(res.data);
@@ -20,7 +20,7 @@ function App() {
     }
   };
 
-  const submitData = async () => {
+  const postSample = async () => {
     try {
       await axios.post(`http://localhost:8000/api/sample/submit/`, {
         sample_id: sampleId,
@@ -48,7 +48,7 @@ function App() {
             value={sampleId}
             onChange={(e) => setSampleId(e.target.value)}
           />
-          <button onClick={lookupSample}>Lookup</button>
+          <button onClick={getSample}>Lookup</button>
           {error && <p style={{ color: "red" }}>{error}</p>}
           {sampleData && (
             <div>
@@ -72,7 +72,7 @@ function App() {
             value={notes}
             onChange={(e) => setNotes(e.target.value)}
           />
-          <button onClick={submitData}>Submit</button>
+          <button onClick={postSample}>Submit</button>
           {error && <p style={{ color: "red" }}>{error}</p>}
         </div>
       )}
