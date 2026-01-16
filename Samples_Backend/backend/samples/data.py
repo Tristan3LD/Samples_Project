@@ -1,6 +1,6 @@
 SAMPLES = {
-    "SAMPLE001": {"name": "Alice Smith", "date_of_birth": "1990-01-01"},
-    "SAMPLE002": {"name": "Bob Johnson", "date_of_birth": "1985-05-15"},
+    "SAMPLE001": {"name": "Tony Stark", "date_of_birth": "1970-05-29"},
+    "SAMPLE002": {"name": "Steve Rodgers", "date_of_birth": "1918-07-04"},
 }
 
 SUBMISSIONS = {}

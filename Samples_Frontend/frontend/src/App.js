@@ -1,4 +1,3 @@
-// src/App.js
 import React, { useState } from "react";
 import axios from "axios";
 
@@ -41,7 +40,7 @@ function App() {
 
   return (
     <div style={{ padding: "20px", maxWidth: "400px", margin: "auto" }}>
-      <h1>Sample Collection</h1>
+      <h1>Lab Sample Intake Application</h1>
       {step === 1 && (
         <div>
           <input
@@ -54,7 +53,7 @@ function App() {
           {sampleData && (
             <div>
               <p>Name: {sampleData.name}</p>
-              <p>DOB: {sampleData.date_of_birth}</p>
+              <p>Date of Birth: {sampleData.date_of_birth}</p>
               <button onClick={() => setStep(2)}>Confirm</button>
             </div>
           )}
