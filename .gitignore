@@ -8,3 +8,21 @@ Samples_Backend/db.sqlite3
 Samples_Frontend/node_modules/
 Samples_Frontend/build/
 Samples_Frontend/.env
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# React
+build/
+dist/
+
+# Python
+__pycache__/
+*.pyc
+.env
+venv/
+
+# OS
+.DS_Store
