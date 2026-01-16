@@ -60,7 +60,13 @@ function App() {
         </div>
       )}
       {step === 2 && (
-        <div>
+        <div 
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "12px",
+            marginTop: "16px",
+        }}>
           <input
             type="date"
             value={collectionDate}
