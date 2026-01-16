@@ -39,7 +39,7 @@ function App() {
   };
 
   return (
-    <div style={{ padding: "20px", maxWidth: "400px", margin: "auto" }}>
+    <div style={{ padding: "20px", maxWidth: "500px", margin: "auto" }}>
       <h1>Lab Sample Intake Application</h1>
       {step === 1 && (
         <div>
