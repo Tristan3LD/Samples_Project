@@ -7,13 +7,7 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
 
-# In-memory sample database
-SAMPLES = {
-    "SAMPLE001": {"name": "Alice Smith", "date_of_birth": "1990-01-01"},
-    "SAMPLE002": {"name": "Bob Johnson", "date_of_birth": "1985-05-15"},
-}
-
-SUBMISSIONS = {}
+from .data import SAMPLES, SUBMISSIONS
 
 def get_sample(request, sample_id):
     sample = SAMPLES.get(sample_id)
