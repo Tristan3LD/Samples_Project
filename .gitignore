@@ -1,0 +1,10 @@
+# Backend (Django)
+Samples_Backend/venv/
+Samples_Backend/__pycache__/
+Samples_Backend/db.sqlite3
+*.pyc
+
+# Frontend (React)
+Samples_Frontend/node_modules/
+Samples_Frontend/build/
+Samples_Frontend/.env
